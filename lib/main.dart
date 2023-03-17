@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:curriculum_vita/skill.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +9,7 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
-  MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -24,7 +23,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: vari == 1 ? ThemeData.light() : ThemeData.dark(),
+      theme: vari == 1 ? themeLight() : themeDark(),
       home: Profile(
         onIconTap: () {
           setState(() {
@@ -34,6 +33,34 @@ class _MyAppState extends State<MyApp> {
       ),
     );
   }
+}
+
+ThemeData themeLight() {
+  return ThemeData(
+    brightness: Brightness.light,
+    primarySwatch: Colors.lightGreen,
+    primaryColor: Colors.lightBlue[800],
+    appBarTheme: AppBarTheme(backgroundColor: Colors.amber),
+    scaffoldBackgroundColor: Color.fromARGB(255, 225, 213, 213),
+    dividerTheme: DividerThemeData(color: Colors.black),
+    textTheme: TextTheme(
+      headline6: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+    ),
+  );
+}
+
+ThemeData themeDark() {
+  return ThemeData(
+    brightness: Brightness.dark,
+    primarySwatch: Colors.green,
+    primaryColor: Colors.grey,
+    appBarTheme: AppBarTheme(backgroundColor: Colors.black),
+    scaffoldBackgroundColor: Color.fromARGB(255, 30, 30, 30),
+    dividerTheme: DividerThemeData(color: Colors.white),
+    textTheme: TextTheme(
+      headline6: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+    ),
+  );
 }
 
 class Profile extends StatefulWidget {
@@ -81,7 +108,6 @@ class _ProfileState extends State<Profile> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(8),
